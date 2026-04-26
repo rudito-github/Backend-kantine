@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * @Author                : rudito-github<rudi.neuss@t-online.de>              *
+ * @CreatedDate           : 2026-04-26 12:22:09                                *
+ * @LastEditors           : rudito-github<rudi.neuss@t-online.de>              *
+ * @LastEditDate          : 2026-04-26 12:22:14                                *
+ * @FilePath              : Online-speisplan/Backend-kantine/src/routes/crud.js*
+ * @CopyRight             : MerBleueAviation                                   *
+ ******************************************************************************/
 const express = require('express')
 const router = express.Router()
 const pool = require('../db')
@@ -7,7 +15,9 @@ const pool = require('../db')
 router.get('/:table', async (req, res) => {
   const { table } = req.params
   try {
-    const result = await pool.query(`SELECT * FROM "${table}"`)
+    const result = await pool.query(
+      `SELECT * FROM "${table}" ORDER BY dish_date ASC, price ASC`,
+    )
     res.json(result.rows)
   } catch (err) {
     res.status(500).json({ error: err.message })
