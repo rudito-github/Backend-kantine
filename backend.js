@@ -5,7 +5,9 @@
  * @LastEditDate          : 2026-04-24 20:30:52                                *
  * @FilePath              : Online-speisplan/index.js                          *
  * @CopyRight             : MerBleueAviation                                   *
- ******************************************************************************/require('dotenv').config()
+/******************************************************************************/
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '.env') })
 const express = require('express')
 const crudRouter = require('./src/routes/crud')
 

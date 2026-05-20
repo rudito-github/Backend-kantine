@@ -1,5 +1,6 @@
 const { Pool, types } = require('pg')
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
 // Keep SQL DATE values as plain strings (YYYY-MM-DD) to avoid timezone shifts.
 types.setTypeParser(1082, (value) => value)
